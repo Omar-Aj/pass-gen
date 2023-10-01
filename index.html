@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pass Gen</title>
+
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body class="h-screen bg-gray-900 text-white">
+    <div class="container h-full flex flex-col justify-center items-center">
+      <h1 class="text-5xl text-center">Pass Gen</h1>
+      <div
+        class="flex flex-col text-center mt-24 bg-gray-800 w-full max-w-md py-6 px-2 rounded-md gap-2"
+      >
+        <div
+          id="password"
+          class="font-mono text-sm md:text-2xl font-bold w-full py-3"
+        >
+          ...
+        </div>
+        <div class="flex gap-1 text-sm">
+          <button
+            id="regenerate"
+            class="bg-gray-700 w-3/4 py-2 rounded-md border-t border-t-gray-600 active:translate-y-[1px]"
+          >
+            Regenerate
+          </button>
+          <button
+            id="copy"
+            class="bg-gray-700 py-2 w-1/4 rounded-md border-t border-t-gray-600 active:translate-y-[1px]"
+          >
+            Copy
+          </button>
+        </div>
+        <label for="password-length"
+          >Password length: <span id="selected-length"></span
+        ></label>
+        <input
+          type="range"
+          id="password-length"
+          name="password-length"
+          min="15"
+          max="30"
+          value="15"
+          class="w-full max-w-md cursor-pointer"
+        />
+        <p id="myerr"></p>
+      </div>
+    </div>
+    <script src="/src/main.js"></script>
+  </body>
+</html>
