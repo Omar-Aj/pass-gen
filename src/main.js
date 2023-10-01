@@ -66,6 +66,14 @@ let passLength = 15;
 let rangeInput = document.getElementById("password-length");
 rangeInput.addEventListener("input", () => {
   passLength = rangeInput.value;
+  let currentStyle = password.getAttribute("class");
+  if (passLength >= 26 && !currentStyle.includes("text-sm")) {
+    currentStyle = currentStyle.replace("text-md", "text-sm");
+    password.setAttribute("class", currentStyle);
+  } else if (passLength < 26 && !currentStyle.includes("text-md")) {
+    currentStyle = currentStyle.replace("text-sm", "text-md");
+    password.setAttribute("class", currentStyle);
+  }
   displayPassword(generatePassword(passLength));
 });
 
