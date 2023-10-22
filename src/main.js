@@ -60,19 +60,16 @@ const passwordRules = [
 ];
 
 let password = document.getElementById("password");
-let selectedLength = document.getElementById("selected-length");
+let passLengthTxt = document.getElementById("pass-length-txt");
 let passLength = 15;
 
 let rangeInput = document.getElementById("password-length");
 rangeInput.addEventListener("input", () => {
   passLength = rangeInput.value;
-  let currentStyle = password.getAttribute("class");
-  if (passLength >= 26 && !currentStyle.includes("text-sm")) {
-    currentStyle = currentStyle.replace("text-md", "text-sm");
-    password.setAttribute("class", currentStyle);
-  } else if (passLength < 26 && !currentStyle.includes("text-md")) {
-    currentStyle = currentStyle.replace("text-sm", "text-md");
-    password.setAttribute("class", currentStyle);
+  if (passLength >= 26 && !password.classList.contains("text-sm")) {
+    password.classList.replace("text-md", "text-sm");
+  } else if (passLength < 26 && !password.classList.contains("text-md")) {
+    password.classList.replace("text-sm", "text-md");
   }
   displayPassword(generatePassword(passLength));
 });
@@ -99,7 +96,7 @@ function generatePassword(passLength) {
   }
 
   let passAfterShuffle = "";
-  // suffle
+  // shuffle
   for (let i = 0; i < passLength; i++) {
     let randomIndex = Math.floor(Math.random() * newPass.length);
     passAfterShuffle += newPass[randomIndex];
@@ -110,21 +107,27 @@ function generatePassword(passLength) {
 
   return passAfterShuffle;
 }
+
 function displayPassword(pass) {
   password.innerText = pass;
-  selectedLength.innerText = passLength;
+  passLengthTxt.innerText = passLength;
 }
-let errp = document.getElementById("myerr");
+
+let errMessage = document.getElementById("err");
 async function copyPass() {
+  let copyBtnTxt = document.getElementById("copy-btn-txt");
+  let copyBtnIcon = document.getElementById("copy-btn-icon");
   try {
     await navigator.clipboard.writeText(password.innerText);
-    copyBtn.innerText = "Copied";
+    copyBtnTxt.innerText = "Copied";
+    copyBtnIcon.classList.add("hidden");
   } catch (err) {
-    copyBtn.innerText = "Error";
-    errp.innerText = err;
+    copyBtnTxt.innerText = "Error";
+    errMessage.innerText = err;
     // console.log(err);
   }
   setTimeout(() => {
-    copyBtn.innerText = "Copy";
+    copyBtnTxt.innerText = "Copy";
+    copyBtnIcon.classList.remove("hidden");
   }, 1000);
 }

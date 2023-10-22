@@ -26,18 +26,18 @@
             class="bg-gray-700 gap-2 flex items-center justify-center font-semibold w-full md:w-3/4 py-2 rounded-md border-t border-t-gray-600 active:translate-y-[1px]"
           >
             <img src="/regenerate.svg" alt="regenerate" class="w-4 h-4" />
-            Regenerate
+            <span>Regenerate</span>
           </button>
           <button
             id="copy"
             class="bg-gray-700 gap-2 md:flex items-center justify-center font-semibold hidden py-2 md:w-1/4 rounded-md border-t border-t-gray-600 active:translate-y-[1px]"
           >
-            <img src="/copy.svg" alt="copy" class="w-4 h-4" />
-            Copy
+            <img id="copy-btn-icon" src="/copy.svg" alt="copy" class="w-4 h-4" />
+            <span id="copy-btn-txt">Copy</span>
           </button>
         </div>
         <label for="password-length"
-          >Password length: <span id="selected-length"></span
+          >Password length: <span id="pass-length-txt"></span
         ></label>
         <input
           type="range"
@@ -48,7 +48,7 @@
           value="15"
           class="w-full max-w-md cursor-pointer"
         />
-        <p id="myerr"></p>
+        <p id="err"></p>
       </div>
     </div>
     <script type="module" src="./src/main.js"></script>
